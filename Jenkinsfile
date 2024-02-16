@@ -73,6 +73,15 @@ pipeline{
                }
             }
         }
+        stage('jFrog Integration : jFrog'){
+         when { expression {  params.action == 'create' } }
+            steps{
+               script{
+                   
+                   jFrogIntegration()
+               }
+            }
+        }
         stage('Docker Image Build'){
          when { expression {  params.action == 'create' } }
             steps{
